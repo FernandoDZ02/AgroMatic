@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,6 +6,7 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Header */
 header {
     background-color: #4CAF50;
     color: white;
@@ -12,6 +14,7 @@ header {
     text-align: center;
 }
 
+/* Navegación */
 nav ul {
     list-style: none;
     padding: 0;
@@ -23,17 +26,27 @@ nav ul li {
     margin: 0 10px;
 }
 
-nav ul li a {
+nav ul li button {
+    background-color: #4CAF50;
     color: white;
-    text-decoration: none;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
+nav ul li button:hover {
+    background-color: #45a049;
+}
+
+/* Main Content */
 main {
     padding: 20px;
-    display: grid; /* Usamos Grid Layout */
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
-    gap: 20px; /* Espacio entre las columnas */
-    justify-items: center; /* Centra los items en el contenedor */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
 }
 
 section {
@@ -42,32 +55,26 @@ section {
     border-radius: 8px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: column; /* Flexbox para centrar verticalmente */
-    align-items: center; /* Centra el contenido horizontalmente */
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-    max-width: 250px; /* Ancho máximo reducido */
+    max-width: 250px;
 }
 
 .vegetal-img {
-    width: 150px; /* Ajusta el tamaño de las imágenes */
+    width: 150px;
     height: auto;
     border-radius: 8px;
-    display: block; /* Asegura que la imagen sea tratada como bloque */
-    margin: 0 auto; /* Centra la imagen horizontalmente */
+    display: block;
+    margin: 0 auto;
 }
 
 p {
     margin: 0;
-    text-align: center; /* Centra el texto */
+    text-align: center;
 }
 
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 20px; /* Añade un margen superior para separación */
-}
+/* Botones de "Más información" */
 button {
     padding: 8px 16px;
     background-color: #4CAF50;
@@ -79,40 +86,14 @@ button {
 }
 
 button:hover {
-    background-color: #45a049; /* Cambia de color cuando se pasa el mouse */
-}
-.search-container {
-    display: flex;
-    align-items: center;
-    background-color: white; /* Fondo blanco */
-    border-radius: 25px; /* Bordes redondeados */
-    padding: 5px 10px; /* Espaciado interno */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
-    transition: all 0.3s ease; /* Transición suave */
+    background-color: #45a049;
 }
 
-.search-container input[type="search"] {
-    border: none; /* Sin bordes */
-    outline: none; /* Sin contorno */
-    padding: 10px;
-    border-radius: 25px;
-    flex-grow: 1; /* Permite que el input crezca */
-    min-width: 100px; /* Ancho mínimo */
-    transition: width 0.4s ease; /* Anima el cambio de ancho */
-}
-
-.search-container input[type="search"]:focus {
-    width: 200px; /* Ancho al enfocar */
-}
-
-.search-container button {
-    background-color: transparent; /* Fondo transparente */
-    border: none; /* Sin bordes */
-    cursor: pointer; /* Mano al pasar sobre el botón */
-    color: #4CAF50; /* Color del icono */
-    padding: 0 10px;
-}
-
-.search-container button:hover {
-    color: #388E3C; /* Color al pasar el ratón */
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 20px;
 }

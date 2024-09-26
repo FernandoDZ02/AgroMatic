@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Madurez</title>
+    <style>
+    
+        body {
+            background:"fondo1.png";
+            font-family: Arial, sans-serif;
+            background-color: #f5f9f6; 
+            color: #333; 
+            margin: 20px;
+        }
+
+        h1 {
+            color: #2e7d32; 
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        form {
+            background-color: #ffffff; 
+            border: 1px solid #e0e0e0; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label, input, select, button {
+            display: block;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        label {
+            color: #2e7d32; 
+            font-weight: bold;
+        }
+
+        input[type="date"], select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #f1f8e9; 
+        }
+
+        button {
+            background-color: #4caf50; 
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #388e3c; 
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #1b5e20; 
+            text-align: center;
+        }
+
+    
+        body::before {
+            content: "";
+            
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05; 
+            z-index: -1;
+        }
+    </style>
+</head>
+<body background="fondo1.png";>
+    <h1>Calculadora de Madurez de Frutas, Vegetales y Plantas</h1>
+    
+    <form id="calendarioForm">
+        <label for="plantDate">Fecha de siembra/plantación:</label>
+        <input type="date" id="plantDate" name="plantDate" required>
+
+        <label for="tipoPlanta">Selecciona la planta:</label>
+        <select id="tipoPlanta" name="tipoPlanta" required>
+            <option value="">--Selecciona una planta--</option>
+            <option value="manzana" data-madurez="150">Manzana (150 días)</option>
+            <option value="tomate" data-madurez="75">Tomate (75 días)</option>
+            <option value="zanahoria" data-madurez="80">Zanahoria (80 días)</option>
+            <option value="lechuga" data-madurez="45">Lechuga (45 días)</option>
+        </select>
+
+        <button type="button" onclick="calcularMadurez()">Calcular Madurez</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function calcularMadurez() {
+            // Obtén la fecha de plantación
+            const fechaPlantacion = document.getElementById("plantDate").value;
+            const tipoPlanta = document.getElementById("tipoPlanta");
+            const diasMadurez = tipoPlanta.options[tipoPlanta.selectedIndex].getAttribute("data-madurez");
+
+            // Verifica si se ingresó una fecha y se seleccionó una planta
+            if (!fechaPlantacion || !diasMadurez) {
+                alert("Por favor, ingrese una fecha de plantación y seleccione una planta.");
+                return;
+            }
+
+            // Convierte la fecha de plantación a un objeto Date
+            const fechaInicial = new Date(fechaPlantacion);
+            
+            // Añade los días de madurez a la fecha de plantación
+            fechaInicial.setDate(fechaInicial.getDate() + parseInt(diasMadurez));
+
+            // Formatea la fecha de madurez
+            const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
+            const fechaMadurez = fechaInicial.toLocaleDateString('es-ES', opcionesFecha);
+
+            // Muestra el resultado
+            document.getElementById("resultado").innerText = `La planta estará madura el ${fechaMadurez}.`;
+        }
+    </script>
+</body>
+</html>
