@@ -7,7 +7,7 @@
     <style>
     
         body {
-            background:"fondo1.png";
+            
             font-family: Arial, sans-serif;
             background-color: #f5f9f6; 
             color: #333; 
@@ -22,11 +22,11 @@
 
         form {
             background-color: #ffffff; 
-            border: 1px solid #e0e0e0; 
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-            max-width: 400px;
+            border: 10px solid #e0e0e0; 
+            padding: 50px;
+            border-radius: 100px;
+            box-shadow: 10 4px 6px rgba(0, 0, 0, 0.1); 
+            max-width: 300px;
             margin: 0 auto;
         }
 
@@ -65,10 +65,12 @@
         }
 
         #resultado {
+            
             margin-top: 20px;
             font-weight: bold;
             color: #1b5e20; 
             text-align: center;
+
         }
 
     
@@ -99,6 +101,7 @@
             <option value="tomate" data-madurez="75">Tomate (75 días)</option>
             <option value="zanahoria" data-madurez="80">Zanahoria (80 días)</option>
             <option value="lechuga" data-madurez="45">Lechuga (45 días)</option>
+            
         </select>
 
         <button type="button" onclick="calcularMadurez()">Calcular Madurez</button>
