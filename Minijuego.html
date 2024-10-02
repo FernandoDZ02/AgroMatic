@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario</title>
+    <title>Calculadora</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -114,108 +114,59 @@
             font-size: 24px; /* Tamaño de subtítulo */
             margin-top: 10px;
         }
-        .seasonal-calendar {
-    background-color: #f0f8ff;
-    padding: 40px;
-    text-align: center;
-}
 
-.seasonal-calendar h2 {
-    font-size: 28px;
-    color: #4CAF50;
-    margin-bottom: 20px;
-}
-
-.fruit-calendar {
-    width: 100%;
-    max-width: 800px;
+        .container {
+    max-width: 600px;
     margin: 0 auto;
-    border-collapse: collapse;
-}
-
-.fruit-calendar th, .fruit-calendar td {
-    border: 1px solid #ddd;
-    padding: 10px;
     text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.fruit-calendar th {
+h1 {
+    color: #4CAF50;
+}
+
+.btn {
     background-color: #4CAF50;
     color: white;
-    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-.fruit-calendar td {
-    background-color: #ffffff;
-    color: #333;
+.btn:hover {
+    background-color: #45a049;
 }
 
-.fruit-calendar td:nth-child(odd) {
-    background-color: #f9f9f9;
+.hidden {
+    display: none;
 }
 
-.fruit-calendar td:empty {
-    background-color: #f0f0f0;
+#options {
+    margin-top: 20px;
 }
 
-@media (max-width: 768px) {
-    .fruit-calendar th, .fruit-calendar td {
-        padding: 8px;
-    }
-}
-.seasonal-calendar {
-    background-color: #f0f8ff;
-    padding: 40px;
-    text-align: center;
-}
-
-.seasonal-calendar h2 {
-    font-size: 28px;
-    color: #4CAF50;
-    margin-bottom: 20px;
-}
-
-.vegetable-calendar {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    border-collapse: collapse;
-}
-
-.vegetable-calendar th, .vegetable-calendar td {
+.option {
+    background-color: #f1f1f1;
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: center;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.vegetable-calendar th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
+.option:hover {
+    background-color: #e7e7e7;
 }
-
-.vegetable-calendar td {
-    background-color: #ffffff;
-    color: #333;
-}
-
-.vegetable-calendar td:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.vegetable-calendar td:empty {
-    background-color: #f0f0f0;
-}
-
-@media (max-width: 768px) {
-    .vegetable-calendar th, .vegetable-calendar td {
-        padding: 8px;
-    }
-}
-
     </style>
 </head>
 <body>
+
 
     <div class="overlay"></div>
 <button class="menu-toggle" id="menu-toggle">☰ Menú</button>
@@ -273,154 +224,23 @@
 </ul>
     
     <button class="back-to-top" id="back-to-top">↑ Volver Arriba</button>
+    
 
-<h1>Calendario</h1>
-<section class="seasonal-calendar">
-    <h2>Calendario de Temporadas de Frutas</h2>
-    <table class="fruit-calendar">
-        <thead>
-            <tr>
-                <th>Fruta</th>
-                <th>Primavera</th>
-                <th>Verano</th>
-                <th>Otoño</th>
-                <th>Invierno</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Fresa</td>
-                <td>✔️</td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Mango</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Manzana</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Uva</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Naranja</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Plátano</td>
-                <td>✔️</td>
-                <td>✔️</td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Melón</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Sandía</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+<h1>MiniJuego</h1>
 
-<section class="seasonal-calendar">
-    <h2>Calendario de Temporadas de Verduras</h2>
-    <table class="vegetable-calendar">
-        <thead>
-            <tr>
-                <th>Verdura</th>
-                <th>Primavera</th>
-                <th>Verano</th>
-                <th>Otoño</th>
-                <th>Invierno</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Espinaca</td>
-                <td>✔️</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Zanahoria</td>
-                <td>✔️</td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Calabacín</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Brócoli</td>
-                <td>✔️</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Lechuga</td>
-                <td>✔️</td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Coliflor</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Puerro</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Pepino</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
+<div class="container">
+    <h1>Juego de Cultivo de Frutas y Verduras</h1>
+    <div id="quiz-container">
+        <h2 id="question"></h2>
+        <div id="options"></div>
+        <button id="next-button" class="btn">Siguiente</button>
+    </div>
+    <div id="result" class="hidden">
+        <h2>Resultado</h2>
+        <p id="score"></p>
+        <button id="restart-button" class="btn">Reiniciar Juego</button>
+    </div>
+</div>
 
 <script>
     const menuToggle = document.getElementById('menu-toggle');
@@ -442,6 +262,93 @@
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    const quizData = [
+    {
+        question: "¿Cuál es la mejor época para sembrar tomates?",
+        options: ["Primavera", "Otoño", "Invierno", "Verano"],
+        answer: "Primavera"
+    },
+    {
+        question: "¿Qué tipo de suelo prefieren las zanahorias?",
+        options: ["Arcilloso", "Arenoso", "Pedregoso", "Húmedo"],
+        answer: "Arenoso"
+    },
+    {
+        question: "¿Cuál es la planta más común para cultivar en casa?",
+        options: ["Cebolla", "Ajo", "Lechuga", "Perejil"],
+        answer: "Lechuga"
+    },
+    {
+        question: "¿Qué fruta necesita mucho sol para crecer?",
+        options: ["Fresa", "Manzana", "Plátano", "Naranja"],
+        answer: "Naranja"
+    },
+    {
+        question: "¿Cuántas horas de sol necesita la mayoría de las verduras al día?",
+        options: ["3-4 horas", "4-6 horas", "6-8 horas", "8-10 horas"],
+        answer: "6-8 horas"
+    }
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+const questionElement = document.getElementById('question');
+const optionsElement = document.getElementById('options');
+const nextButton = document.getElementById('next-button');
+const resultElement = document.getElementById('result');
+const scoreElement = document.getElementById('score');
+const restartButton = document.getElementById('restart-button');
+
+function startGame() {
+    currentQuestionIndex = 0;
+    score = 0;
+    nextButton.classList.remove('hidden');
+    resultElement.classList.add('hidden');
+    showQuestion();
+}
+
+function showQuestion() {
+    const currentQuestion = quizData[currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
+    optionsElement.innerHTML = '';
+
+    currentQuestion.options.forEach(option => {
+        const optionElement = document.createElement('div');
+        optionElement.textContent = option;
+        optionElement.classList.add('option');
+        optionElement.addEventListener('click', () => selectOption(option));
+        optionsElement.appendChild(optionElement);
+    });
+}
+
+function selectOption(selectedOption) {
+    const currentQuestion = quizData[currentQuestionIndex];
+    if (selectedOption === currentQuestion.answer) {
+        score++;
+    }
+    currentQuestionIndex++;
+    if (currentQuestionIndex < quizData.length) {
+        showQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    questionElement.textContent = '';
+    optionsElement.innerHTML = '';
+    nextButton.classList.add('hidden');
+    resultElement.classList.remove('hidden');
+    scoreElement.textContent = `Tu puntuación es ${score} de ${quizData.length}`;
+}
+
+restartButton.addEventListener('click', startGame);
+nextButton.addEventListener('click', showQuestion);
+
+// Iniciar el juego
+startGame();
 </script>
 
 </body>

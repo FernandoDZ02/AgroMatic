@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Desplegable con Secciones</title>
+    <title>Mapa</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,16 +15,13 @@
             background-position: center; 
             height: 200vh; 
             position: relative; 
-        }
-
-        .menu-container {
-            position: fixed;
-            top: 10px;
-            left: 20px;
-            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.2); /* Fondo negro con 70% de opacidad */
         }
 
         .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 20px;
             background-color: rgba(34, 153, 84, 0.8); 
             color: white;
             border: none;
@@ -32,6 +29,7 @@
             cursor: pointer;
             border-radius: 5px;
             transition: background 0.3s;
+            z-index: 1;
         }
 
         .menu-toggle:hover {
@@ -40,15 +38,15 @@
 
         .nav-list {
             list-style: none;
+            position: fixed;
+            top: 60px;
+            left: 20px; 
             background-color: rgba(34, 153, 84, 0.8);
             border-radius: 5px;
             padding: 10px;
             display: none; 
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 200px;
+            z-index: 1;
         }
 
         .nav-list li {
@@ -151,58 +149,67 @@
 </head>
 <body>
 
-<div class="menu-container">
-    <button class="menu-toggle" id="menu-toggle">☰ Menú</button>
-    <ul class="nav-list" id="nav-list">
-        <li>
-            <a href="index.html">Inicio</a>
-            <ul class="sub-menu">
-                <li><a href="#intro">Login</a></li>
-                <li><a href="#news">Contactanos</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#about">Sobre Nosotros</a>
-            <ul class="sub-menu">
-                <li><a href="#team">Nuestro Equipo</a></li>
-                <li><a href="#mission">Misión y Visión</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="Fruta.html">Frutas</a>
-            <ul class="sub-menu">
-                <li><a href="#consulting">Acidas</a></li>
-                <li><a href="#development">Semiacidas</a></li>
-                <li><a href="#development">Dulces</a></li>
-                <li><a href="#development">Neutras</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="Verduras.html">Verduras</a>
-            <ul class="sub-menu">
-                <li><a href="#projects">Hojas</a></li>
-                <li><a href="#testimonials">Raices</a></li>
-                <li><a href="#projects">Flores</a></li>
-                <li><a href="#testimonials">Tallos</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#contact">Material</a>
-            <ul class="sub-menu">
-                <li><a href="Calculadora">Calculadora</a></li>
-                <li><a href="Calendario">Calendario</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<button class="back-to-top" id="back-to-top">↑ Volver Arriba</button>
-
+    <div class="overlay"></div>
+<button class="menu-toggle" id="menu-toggle">☰ Menú</button>
+<ul class="nav-list" id="nav-list">
+    <li>
+        <a href="index.html">Inicio</a>
+        <ul class="sub-menu">
+            <li><a href="#intro">Login</a></li>
+            <li><a href="index.html">Contactanos</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="index.html">Sobre Nosotros</a>
+        <ul class="sub-menu">
+            <li><a href="index.html">Nuestro Equipo</a></li>
+            <li><a href="index.html">Misión y Visión</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="Fruta.html">Frutas</a>
+        <ul class="sub-menu">
+            <li><a href="Fruta.html">Acidas</a></li>
+            <li><a href="Fruta.html">Semiacidas</a></li>
+	        <li><a href="Fruta.html">Dulces</a></li>
+	        <li><a href="Fruta.html">Neutras</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="Verdura.html">Verduras</a>
+        <ul class="sub-menu">
+            <li><a href="Verdura.html">Hojas</a></li>
+            <li><a href="Verdura.html">Raices</a></li>
+	        <li><a href="Verdura.html">Flores</a></li>
+            <li><a href="Verdura.html">Tallos</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="Verdura.html">Plantas</a>
+        <ul class="sub-menu">
+            <li><a href="#projects">Hojas</a></li>
+            <li><a href="#testimonials">Raices</a></li>
+	        <li><a href="#projects">Flores</a></li>
+            <li><a href="#testimonials">Tallos</a></li>
+        </ul>
+    </li>
+    <li>
+        <a>Material</a>
+        <ul class="sub-menu">
+            <li><a href="Calculadora.html">Calculadora</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="Minijuego.html">Quizz</a></li>
+        </ul>
+    </li>
+</ul>
+    
+    <button class="back-to-top" id="back-to-top">↑ Volver Arriba</button>
+    
 <h1>AGROMATIC</h1>
 
 <h2>Ubicación</h2>
 <div id="map" style="height: 400px; width: 100%;"></div>
-
 <script>
     const menuToggle = document.getElementById('menu-toggle');
     const navList = document.getElementById('nav-list');
@@ -223,8 +230,7 @@
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    function initMap() {
+function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 5,
             center: { lat: 23.6345, lng: -102.5528 }, // Centra el mapa en México
@@ -251,6 +257,6 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgbh9gYnNR2pdWmd-SV3U8vrMj0LWNWZ0&callback=initMap">
 </script>
 
+
 </body>
 </html>
-
