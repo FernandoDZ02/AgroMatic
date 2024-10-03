@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verduras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('logo.png');
+            background-size: 50%; 
+            background-repeat: no-repeat; 
+            background-position: center; 
+            background-color: rgba(0, 0, 0, 0.2); /* Fondo negro con 70% de opacidad */
+            height: 200vh; 
+            position: relative; 
+        }
+
+        .menu-toggle {
+            position: fixed;
+            top: 10px;
+            left: 20px;
+            background-color: rgba(34, 153, 84, 0.8); 
+            color: white;
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background-color: rgba(0, 86, 179, 0.8);
+        }
+
+        .nav-list {
+            list-style: none;
+            position: fixed;
+            top: 60px;
+            left: 20px; 
+            background-color: rgba(34, 153, 84, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+            display: none; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-list li {
+            margin: 5px 0;
+            position: relative; 
+        }
+
+        .nav-list a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            display: block; 
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+
+        .nav-list a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .sub-menu {
+            display: none; 
+            position: absolute;
+            top: 0;
+            left: 100%; 
+            background-color: rgba(34, 153, 84, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .nav-list li:hover .sub-menu {
+            display: block; 
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(34, 153, 84, 0.8);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; 
+            transition: background 0.3s;
+        }
+
+        .back-to-top:hover {
+            background-color: rgba(0, 86, 179, 0.8);
+        }
+
+        /* Estilo para el título */
+        h1 {
+            text-align: center;
+            margin-top: 60px;
+            color: #4CAF50; /* Color verde */
+            font-size: 36px; /* Tamaño de fuente */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra */
+        }
+
+        h2 {
+            text-align: center;
+            color: #555;
+            font-size: 24px; /* Tamaño de subtítulo */
+            margin-top: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .category {
+            width: 100%;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .category h2 {
+            font-size: 28px;
+            color: #4CAF50;
+        }
+
+        .fruit {
+            width: 300px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .fruit:hover {
+            transform: scale(1.05);
+        }
+
+        .fruit img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .fruit h3 {
+            margin: 10px 0;
+            color: #4CAF50;
+        }
+
+        .fruit p {
+            padding: 0 10px 20px;
+            color: #555;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 60px;
+            color: #4CAF50;
+            font-size: 36px;
+        }
+        .logo {
+    position: absolute;
+    top: -50px;
+    right: 10px;
+    height: 100px;
+    width: auto;
+}
+
+a {
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <a href="index.html"> 
+        <img src="logo.png" alt="Logo" class="logo">
+    </a>
+    <div class="overlay"></div>
+<button class="menu-toggle" id="menu-toggle">☰ Menú</button>
+<ul class="nav-list" id="nav-list">
+    <li>
+        <a href="index.html">Inicio</a>
+        <ul class="sub-menu">
+            <li><a href="#intro">Login</a></li>
+            <li><a href="index.html">Contactanos</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="index.html">Sobre Nosotros</a>
+        <ul class="sub-menu">
+            <li><a href="index.html">Nuestro Equipo</a></li>
+            <li><a href="index.html">Misión y Visión</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="Fruta.html">Frutas</a>
+        <ul class="sub-menu">
+            <li><a href="#consulting">Acidas</a></li>
+            <li><a href="#development">Semiacidas</a></li>
+	        <li><a href="#development">Dulces</a></li>
+	        <li><a href="#development">Neutras</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="Verdura.html">Verduras</a>
+        <ul class="sub-menu">
+            <li><a href="#hojas">Hojas</a></li>
+            <li><a href="#raices">Raices</a></li>
+	        <li><a href="#flor">Flores</a></li>
+            <li><a href="#tallo">Tallos</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="Verdura.html">Plantas</a>
+        <ul class="sub-menu">
+            <li><a href="#hojas">Hojas</a></li>
+            <li><a href="#raices">Raices</a></li>
+	        <li><a href="#flor">Flores</a></li>
+            <li><a href="#tallo">Tallos</a></li>
+        </ul>
+    </li>
+    <li>
+        <a>Material</a>
+        <ul class="sub-menu">
+            <li><a href="Calculadora.html">Calculadora</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="Minijuego.html">Quizz</a></li>
+        </ul>
+    </li>
+</ul>
+    
+    <button class="back-to-top" id="back-to-top">↑ Volver Arriba</button>
+    
+    <h1>Verduras</h1>
+
+    <!-- Categoría Ácidas -->
+    <div class="category" id="hojas">
+        <h2>Hojas</h2>
+        <div class="container">
+            <!-- Frutas Ácidas -->
+            <div class="fruit">
+                <img src="limon.jpg" alt="Limón">
+                <h3>Limón</h3>
+                <p>El limón es una fruta cítrica rica en vitamina C, con un sabor muy ácido y refrescante.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="naranja.jpg" alt="Naranja">
+                <h3>Naranja</h3>
+                <p>Fruta cítrica dulce y jugosa, perfecta para jugos naturales y postres.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="lima.jpg" alt="Lima">
+                <h3>Lima</h3>
+                <p>Pequeña y verde, la lima tiene un sabor ácido similar al limón, ideal para bebidas.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="fresa.jpg" alt="Fresa">
+                <h3>Fresa</h3>
+                <p>Fruta roja y jugosa con un toque ácido y dulce, perfecta para postres.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="piña.jpg" alt="Piña">
+                <h3>Piña</h3>
+                <p>Fruta tropical de sabor dulce y ácido, refrescante y digestiva.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="frambuesa.jpg" alt="Frambuesa">
+                <h3>Frambuesa</h3>
+                <p>Pequeña y roja, la frambuesa tiene un sabor ácido ideal para mermeladas.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="toronja.jpg" alt="Toronja">
+                <h3>Toronja</h3>
+                <p>Fruta cítrica de sabor amargo y ácido, rica en vitamina C.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="granada.jpg" alt="Granada">
+                <h3>Granada</h3>
+                <p>Fruta con semillas comestibles y un sabor ácido único.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="tamarindo.jpg" alt="Tamarindo">
+                <h3>Tamarindo</h3>
+                <p>Fruta tropical de sabor ácido, ideal para bebidas y salsas.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="kiwi.jpg" alt="Kiwi">
+                <h3>Kiwi</h3>
+                <p>Fruta verde y ácida, rica en vitamina C y antioxidantes.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Categoría Semiacidas -->
+    <div class="category" id="raices">
+        <h2>Raices</h2>
+        <div class="container">
+            <!-- Frutas Semiacidas -->
+            <div class="fruit">
+                <img src="manzana.jpg" alt="Manzana">
+                <h3>Manzana</h3>
+                <p>Fruta crujiente y refrescante, de sabor semiácido y muy versátil.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="pera.jpg" alt="Pera">
+                <h3>Pera</h3>
+                <p>Fruta dulce y jugosa con un toque de acidez, perfecta para ensaladas.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="uva.jpg" alt="Uva">
+                <h3>Uva</h3>
+                <p>Pequeñas y dulces, las uvas son ideales como snack o en postres.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="durazno.jpg" alt="Durazno">
+                <h3>Durazno</h3>
+                <p>Fruta de pulpa suave y dulce con un toque ácido, perfecta para postres.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="ciruela.jpg" alt="Ciruela">
+                <h3>Ciruela</h3>
+                <p>Fruta jugosa y semiácida, rica en fibra y antioxidantes.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="mango.jpg" alt="Mango">
+                <h3>Mango</h3>
+                <p>Fruta tropical de sabor dulce y un toque ácido, perfecta para postres y batidos.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="albaricoque.jpg" alt="Albaricoque">
+                <h3>Albaricoque</h3>
+                <p>Fruta pequeña y semiácida, con un sabor dulce y suave.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="guanabana.jpg" alt="Guanábana">
+                <h3>Guanábana</h3>
+                <p>Fruta tropical de pulpa cremosa y sabor semiácido, muy refrescante.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="mandarina.jpg" alt="Mandarina">
+                <h3>Mandarina</h3>
+                <p>Fruta cítrica dulce con un toque ácido, fácil de pelar y comer.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="chirimoya.jpg" alt="Chirimoya">
+                <h3>Chirimoya</h3>
+                <p>Fruta tropical dulce con un ligero toque ácido, de textura cremosa.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Categoría Dulces -->
+    <div class="category" id="flor">
+        <h2>Flores</h2>
+        <div class="container">
+            <!-- Frutas Dulces -->
+            <div class="fruit">
+                <img src="banana.jpg" alt="Banana">
+                <h3>Banana</h3>
+                <p>Fruta dulce y suave, rica en potasio, ideal para postres y batidos.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="melon.jpg" alt="Melón">
+                <h3>Melón</h3>
+                <p>Fruta grande y jugosa, con un sabor dulce y refrescante.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="sandia.jpg" alt="Sandía">
+                <h3>Sandía</h3>
+                <p>Fruta tropical muy jugosa, perfecta para los días calurosos de verano.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="higo.jpg" alt="Higo">
+                <h3>Higo</h3>
+                <p>Fruta dulce y suave, con un sabor único y textura gelatinosa.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="cereza.jpg" alt="Cereza">
+                <h3>Cereza</h3>
+                <p>Fruta pequeña y roja, muy dulce y perfecta para comer fresca o en postres.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="mora.jpg" alt="Mora">
+                <h3>Mora</h3>
+                <p>Fruta pequeña y oscura, dulce y jugosa, ideal para mermeladas.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="nuez.jpg" alt="Nuez">
+                <h3>Nuez</h3>
+                <p>Fruta seca, rica en grasas saludables y proteínas, muy nutritiva.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="coco.jpg" alt="Coco">
+                <h3>Coco</h3>
+                <p>Fruta tropical con pulpa dulce y refrescante, ideal para bebidas y postres.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="datil.jpg" alt="Dátil">
+                <h3>Dátil</h3>
+                <p>Fruta dulce y masticable, rica en azúcares naturales y muy energética.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="papaya.jpg" alt="Papaya">
+                <h3>Papaya</h3>
+                <p>Fruta tropical muy dulce y jugosa, buena para la digestión.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Categoría Neutras -->
+    <div class="category" id="tallo">
+        <h2>Tallos</h2>
+        <div class="container">
+            <!-- Frutas Neutras -->
+            <div class="fruit">
+                <img src="aguacate.jpg" alt="Aguacate">
+                <h3>Aguacate</h3>
+                <p>Fruta cremosa, rica en grasas saludables, ideal para ensaladas y guacamole.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="calabaza.jpg" alt="Calabaza">
+                <h3>Calabaza</h3>
+                <p>Fruta de sabor neutro, ideal para guisos y postres, rica en nutrientes.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="pepino.jpg" alt="Pepino">
+                <h3>Pepino</h3>
+                <p>Fruta crujiente y refrescante, ideal para ensaladas y jugos.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="zucchini.jpg" alt="Zucchini">
+                <h3>Zucchini</h3>
+                <p>Fruta de sabor neutro, ideal para salteados y guisos.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="tomate.jpg" alt="Tomate">
+                <h3>Tomate</h3>
+                <p>Fruta jugosa y dulce, ideal para ensaladas, salsas y guisos.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="pimiento.jpg" alt="Pimiento">
+                <h3>Pimiento</h3>
+                <p>Fruta colorida, rica en vitaminas, ideal para ensaladas y asados.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="berengena.jpg" alt="Berenjena">
+                <h3>Berenjena</h3>
+                <p>Fruta de sabor neutro, ideal para guisos y platos vegetarianos.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="oliva.jpg" alt="Oliva">
+                <h3>Oliva</h3>
+                <p>Fruta pequeña y aceitosa, rica en grasas saludables y antioxidantes.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="batata.jpg" alt="Batata">
+                <h3>Batata</h3>
+                <p>Fruta tuberosa dulce, rica en nutrientes, ideal para guisos y purés.</p>
+            </div>
+    
+            <div class="fruit">
+                <img src="chile.jpg" alt="Chile">
+                <h3>Chile</h3>
+                <p>Fruta picante, ideal para dar sabor a platos y salsas.</p>
+            </div>
+        </div>
+    </div>
+    <button class="back-to-top" id="back-to-top">↑ Volver Arriba</button>
+    
+
+
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
+    const backToTop = document.getElementById('back-to-top');
+
+    menuToggle.addEventListener('click', () => {
+        navList.style.display = navList.style.display === 'none' || navList.style.display === '' ? 'block' : 'none';
+    });
+
+    window.addEventListener('scroll', () => {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            backToTop.style.display = 'block';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>

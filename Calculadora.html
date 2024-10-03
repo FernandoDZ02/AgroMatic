@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario</title>
+    <title>Calculadora</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -114,106 +114,8 @@
             font-size: 24px; /* Tamaño de subtítulo */
             margin-top: 10px;
         }
-        .seasonal-calendar {
-    background-color: #f0f8ff;
-    padding: 40px;
-    text-align: center;
-}
 
-.seasonal-calendar h2 {
-    font-size: 28px;
-    color: #4CAF50;
-    margin-bottom: 20px;
-}
-
-.fruit-calendar {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    border-collapse: collapse;
-}
-
-.fruit-calendar th, .fruit-calendar td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-.fruit-calendar th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-}
-
-.fruit-calendar td {
-    background-color: #ffffff;
-    color: #333;
-}
-
-.fruit-calendar td:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.fruit-calendar td:empty {
-    background-color: #f0f0f0;
-}
-
-@media (max-width: 768px) {
-    .fruit-calendar th, .fruit-calendar td {
-        padding: 8px;
-    }
-}
-.seasonal-calendar {
-    background-color: #f0f8ff;
-    padding: 40px;
-    text-align: center;
-}
-
-.seasonal-calendar h2 {
-    font-size: 28px;
-    color: #4CAF50;
-    margin-bottom: 20px;
-}
-
-.vegetable-calendar {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    border-collapse: collapse;
-}
-
-.vegetable-calendar th, .vegetable-calendar td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-.vegetable-calendar th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-}
-
-.vegetable-calendar td {
-    background-color: #ffffff;
-    color: #333;
-}
-
-.vegetable-calendar td:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.vegetable-calendar td:empty {
-    background-color: #f0f0f0;
-}
-
-@media (max-width: 768px) {
-    .vegetable-calendar th, .vegetable-calendar td {
-        padding: 8px;
-    }
-}
-
-.logo {
+        .logo {
     position: absolute;
     top: -50px;
     right: 10px;
@@ -224,15 +126,16 @@
 a {
     display: block;
 }
-
     </style>
-
 </head>
 <body>
+
+
+    <div class="overlay"></div>
+
     <a href="index.html"> 
         <img src="logo.png" alt="Logo" class="logo">
     </a>
-    <div class="overlay"></div>
 <button class="menu-toggle" id="menu-toggle">☰ Menú</button>
 <ul class="nav-list" id="nav-list">
     <li>
@@ -289,152 +192,8 @@ a {
     
     <button class="back-to-top" id="back-to-top">↑ Volver Arriba</button>
 
-<h1>Calendario</h1>
-<section class="seasonal-calendar">
-    <h2>Calendario de Temporadas de Frutas</h2>
-    <table class="fruit-calendar">
-        <thead>
-            <tr>
-                <th>Fruta</th>
-                <th>Primavera</th>
-                <th>Verano</th>
-                <th>Otoño</th>
-                <th>Invierno</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Fresa</td>
-                <td>✔️</td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Mango</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Manzana</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Uva</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Naranja</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Plátano</td>
-                <td>✔️</td>
-                <td>✔️</td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Melón</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Sandía</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+<h1>Calculadora</h1>
 
-<section class="seasonal-calendar">
-    <h2>Calendario de Temporadas de Verduras</h2>
-    <table class="vegetable-calendar">
-        <thead>
-            <tr>
-                <th>Verdura</th>
-                <th>Primavera</th>
-                <th>Verano</th>
-                <th>Otoño</th>
-                <th>Invierno</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Espinaca</td>
-                <td>✔️</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Zanahoria</td>
-                <td>✔️</td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Calabacín</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Brócoli</td>
-                <td>✔️</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Lechuga</td>
-                <td>✔️</td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Coliflor</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Puerro</td>
-                <td></td>
-                <td></td>
-                <td>✔️</td>
-                <td>✔️</td>
-            </tr>
-            <tr>
-                <td>Pepino</td>
-                <td></td>
-                <td>✔️</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 
 <script>
