@@ -16,6 +16,7 @@
             background-color: rgba(0, 0, 0, 0.2); /* Fondo negro con 70% de opacidad */
             height: 200vh; 
             position: relative; 
+            
         }
 
         .menu-toggle {
@@ -126,9 +127,96 @@
 a {
     display: block;
 }
+
+form {
+            background-color: #ffffff; /* Fondo blanco para el formulario */
+            border: 1px solid #e0e0e0; /* Borde gris suave */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+
+
+        label {
+            color: #2e7d32; /* Verde para etiquetas */
+            font-weight: bold;
+        }
+
+        input[type="date"], select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #f1f8e9; /* Verde claro */
+        }
+
+        button {
+            background-color: #4caf50; /* Verde vivo */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #388e3c; /* Verde oscuro en hover */
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #1b5e20; /* Verde oscuro */
+            text-align: center;
+        }
+
+        /* Estilos adicionales para mayor elegancia */
+        body::before {
+            content: "";
+            background: url('plant-pattern.png') repeat;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05; /* Fondo decorativo sutil */
+            z-index: -1;
+        }
+
+        footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 20px;
+}
     </style>
 </head>
 <body>
+    <h1>Calculadora</h1>
+    
+    <form id="calendarioForm">
+        <label for="plantDate">Fecha de siembra/plantación:</label>
+        <input type="date" id="plantDate" name="plantDate" required>
+
+        <label for="tipoPlanta">Selecciona la planta:</label>
+        <select id="tipoPlanta" name="tipoPlanta" required>
+            <option value="">--Selecciona una planta--</option>
+            <option value="manzana" data-madurez="150">Manzana (150 días)</option>
+            <option value="tomate" data-madurez="75">Tomate (75 días)</option>
+            <option value="zanahoria" data-madurez="80">Zanahoria (80 días)</option>
+            <option value="lechuga" data-madurez="45">Lechuga (45 días)</option>
+        </select>
+
+        <button type="button" onclick="calcularMadurez()">Calcular Madurez</button>
+    </form>
+
+    <div id="resultado"></div>
 
 
     <div class="overlay"></div>
@@ -141,7 +229,6 @@ a {
     <li>
         <a href="index.html">Inicio</a>
         <ul class="sub-menu">
-            <li><a href="#intro">Login</a></li>
             <li><a href="index.html">Contactanos</a></li>
         </ul>
     </li>
@@ -192,10 +279,6 @@ a {
     
     <button class="back-to-top" id="back-to-top">↑ Volver Arriba</button>
 
-<h1>Calculadora</h1>
-
-
-
 <script>
     const menuToggle = document.getElementById('menu-toggle');
     const navList = document.getElementById('nav-list');
@@ -216,7 +299,36 @@ a {
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    function calcularMadurez() {
+            // Obtén la fecha de plantación
+            const fechaPlantacion = document.getElementById("plantDate").value;
+            const tipoPlanta = document.getElementById("tipoPlanta");
+            const diasMadurez = tipoPlanta.options[tipoPlanta.selectedIndex].getAttribute("data-madurez");
+
+            // Verifica si se ingresó una fecha y se seleccionó una planta
+            if (!fechaPlantacion || !diasMadurez) {
+                alert("Por favor, ingrese una fecha de plantación y seleccione una planta.");
+                return;
+            }
+
+            // Convierte la fecha de plantación a un objeto Date
+            const fechaInicial = new Date(fechaPlantacion);
+            
+            // Añade los días de madurez a la fecha de plantación
+            fechaInicial.setDate(fechaInicial.getDate() + parseInt(diasMadurez));
+
+            // Formatea la fecha de madurez
+            const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
+            const fechaMadurez = fechaInicial.toLocaleDateString('es-ES', opcionesFecha);
+
+            // Muestra el resultado
+            document.getElementById("resultado").innerText = `La planta estará madura el ${fechaMadurez}.`;
+        }
+
+
 </script>
+
 
 </body>
 </html>

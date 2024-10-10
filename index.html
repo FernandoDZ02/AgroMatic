@@ -614,11 +614,33 @@ a {
     width: auto;
 }
 
+.login-container {
+    display: inline-block; /* Permite que el contenedor sea clickeable */
+    text-decoration: none; /* Elimina el subrayado del texto */
+    color: inherit; /* Mantiene el color del texto original */
+    position: absolute;
+    top: -45px; /* Ajusta la posición vertical según sea necesario */
+    right: 50px; /* Distancia del borde derecho */
+
+    margin-top: 20px;
+}
+
+.login-text {
+    margin-top: 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 30px; /* Ajusta la posición vertical según sea necesario */
+    right: 150px; /* Distancia del borde derecho */
+    height: 60px; /* Ajusta el tamaño del logo */
+}
     </style>
 </head>
 <header>
-    <a href="login.html"> <!-- El enlace que redirige a la página de inicio de sesión -->
-        <img src="logosesion.png" alt="Logo de Inicio de Sesión" class="logosesion">
+    <a href="login.html" class="login-container"> 
+        <img src="logosesion.png" alt="Inicio de Sesión" class="logosesion">
+        <p class="login-text">Iniciar sesión</p>
     </a>
     <a href="index.html"> 
         <img src="logo.png" alt="Logo" class="logo">
@@ -634,7 +656,7 @@ a {
     <li>
         <a href="index.html">Inicio</a>
         <ul class="sub-menu">
-            <li><a href="#intro">Login</a></li>
+            
             <li><a href="#contact">Contactanos</a></li>
         </ul>
     </li>
