@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
+    <title>Busqueda</title>
+    <style> 
+body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -13,48 +13,53 @@
             background-size: 50%;
             background-repeat: no-repeat;
             background-position: center;
+            background-color: rgba(0, 0, 0, 0.2);
             height: 200vh;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .menu-toggle {
             position: fixed;
-            background-color: rgba(34, 153, 84, 0.8);
             top: 10px;
             left: 20px;
+            background-color: rgba(34, 153, 84, 0.8); 
             color: white;
             border: none;
             padding: 20px;
             cursor: pointer;
             border-radius: 5px;
             transition: background 0.3s;
-            z-index: 1000;
         }
+
         .menu-toggle:hover {
             background-color: rgba(0, 86, 179, 0.8);
         }
+
         .nav-list {
             list-style: none;
-            background-color: rgba(34, 153, 84, 0.8);
-            border-radius: 5px;
-            padding: 10px;
-            display: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             position: fixed;
             top: 60px;
             left: 20px; 
-            z-index: 1000; 
+            background-color: rgba(34, 153, 84, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+            display: none; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .nav-list li {
             margin: 5px 0;
-            position: relative;
+            position: relative; 
         }
 
         .nav-list a {
             color: #fff;
             text-decoration: none;
             padding: 5px 10px;
-            display: block;
+            display: block; 
             border-radius: 3px;
             transition: background 0.3s;
         }
@@ -89,7 +94,7 @@
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
-            display: none;
+            display: none; 
             transition: background 0.3s;
         }
 
@@ -97,76 +102,92 @@
             background-color: rgba(0, 86, 179, 0.8);
         }
 
-
-button {
-            background-color: #4caf50; /* Verde vivo */
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .menu-container {
-            position: fixed;
-            top: 10px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-
-        #info {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 5px;
-            padding: 10px;
-            display: none;
-            z-index: 1000;
+	.container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
         }
 
         h1 {
-            text-align: center;
-            margin-top: 60px;
-            color: #4CAF50;
-            font-size: 36px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #2e7d32;
         }
 
-        h2 {
-            text-align: center;
-            color: #555;
-            font-size: 24px;
-            margin-top: 10px;
+        .search-bar {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
+        input {
+            padding: 10px;
+            width: 70%;
+            border: 2px solid #c8e6c9;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #2e7d32;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        #resultados {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result-item {
+            background-color: #e8f5e9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item h2 {
+            margin: 0;
+            color: #1b5e20;
+        }
 
         .logo {
     position: absolute;
-    top: -50px;
+    top: 10px;
     right: 10px;
     height: 100px;
     width: auto;
 }
 
+
 a {
     display: block;
 }
-    </style>
+ </style>
 </head>
-
 <body>
     <a href="index.html"> 
         <img src="logo.png" alt="Logo" class="logo">
     </a>
+    <div class="overlay"></div>
     <button class="menu-toggle" id="menu-toggle">☰ Menú</button>
     <ul class="nav-list" id="nav-list">
         <li>
             <a href="index.html">Inicio</a>
             <ul class="sub-menu">
+
                 <li><a href="index.html">Contactanos</a></li>
-                <li><a href="buscador.html">Buscador</a></li>
             </ul>
         </li>
         <li>
@@ -179,10 +200,10 @@ a {
         <li>
             <a href="Fruta.html">Frutas</a>
             <ul class="sub-menu">
-                <li><a href="Fruta.html">Acidas</a></li>
-                <li><a href="Fruta.html">Semiacidas</a></li>
-                <li><a href="Fruta.html">Dulces</a></li>
-                <li><a href="Fruta.html">Neutras</a></li>
+                <li><a href="#acida">Acidas</a></li>
+                <li><a href="#semi">Semiacidas</a></li>
+                <li><a href="#dulces">Dulces</a></li>
+                <li><a href="#neutra">Neutras</a></li>
             </ul>
         </li>
         <li>
@@ -195,7 +216,7 @@ a {
             </ul>
         </li>
         <li>
-            <a href="plantas.html">Plantas</a>
+            <a href="Verdura.html">Plantas</a>
             <ul class="sub-menu">
                 <li><a href="#projects">Hojas</a></li>
                 <li><a href="#testimonials">Raices</a></li>
@@ -213,16 +234,20 @@ a {
             </ul>
         </li>
     </ul>
-        
-        <button class="back-to-top" id="back-to-top">↑ Volver Arriba</button>
 
-<h1>AGROMATIC</h1>
-<h2>Ubicación</h2>
-<div id="map" style="height: 400px; width: 100%;"></div>
-<div id="info"></div>
 
-<script>
-    const menuToggle = document.getElementById('menu-toggle');
+<div class="container">
+        <h1>Búsqueda de Frutas, Verduras y Plantas</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Busca una planta..." />
+            <button onclick="buscarPlanta()">Buscar</button>
+        </div>
+        <div id="resultados"></div>
+    </div>
+
+    <script>
+
+ const menuToggle = document.getElementById('menu-toggle');
     const navList = document.getElementById('nav-list');
     const backToTop = document.getElementById('back-to-top');
 
@@ -242,66 +267,41 @@ a {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Datos de estados
-    const estados = {
-        "Aguascalientes": {
-            frutas: ["Fresa", "Durazno"],
-            verduras: ["Zanahoria", "Pepino"],
-            plantas: ["Cebolla", "Tomate"],
-            clima: "Semiárido",
-            suelo: "Arcilloso",
-            lat: 21.8853,
-            lng: -102.2916
-        },
-        "Baja California": {
-            frutas: ["Uva", "Cítricos"],
-            verduras: ["Lechuga", "Brócoli"],
-            plantas: ["Chiles", "Ajo"],
-            clima: "Seco",
-            suelo: "Arenoso",
-            lat: 30.8390,
-            lng: -115.5520
-        },
-        // Agregar más estados aquí...
-    };
+    </script>
+<script>
+        // Ejemplo de base de datos de plantas
+        const plantas = [
+            { nombre: "Manzana", tipo: "Fruta", descripcion: "La manzana es una fruta rica en vitaminas y minerales. Es excelente para el sistema digestivo.", imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/800px-Red_Apple.jpg" },
+            { nombre: "Zanahoria", tipo: "Verdura", descripcion: "La zanahoria es una hortaliza rica en betacarotenos, muy beneficiosa para la vista.", imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/CarrotRoots.jpg/1024px-CarrotRoots.jpg" },
+            { nombre: "Aloe Vera", tipo: "Planta", descripcion: "El aloe vera es conocido por sus propiedades medicinales, especialmente para la piel.", imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Aloe_vera_flower_%282016%29_-_01.jpg/800px-Aloe_vera_flower_%282016%29_-_01.jpg" }
+        ];
 
-    function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 5,
-            center: { lat: 23.6345, lng: -102.5528 },
-        });
+        function buscarPlanta() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const resultados = document.getElementById('resultados');
+            resultados.innerHTML = ''; // Limpiar resultados previos
 
-        for (const [nombre, info] of Object.entries(estados)) {
-            const marker = new google.maps.Marker({
-                position: { lat: info.lat, lng: info.lng },
-                map: map,
-                title: nombre,
-            });
+            const plantaEncontrada = plantas.filter(planta => planta.nombre.toLowerCase().includes(input));
 
-            marker.addListener('click', () => {
-                const content = `
-                    <h3>${nombre}</h3>
-                    <p><strong>Frutas:</strong> ${info.frutas.join(", ")}</p>
-                    <p><strong>Verduras:</strong> ${info.verduras.join(", ")}</p>
-                    <p><strong>Plantas:</strong> ${info.plantas.join(", ")}</p>
-                    <p><strong>Clima:</strong> ${info.clima}</p>
-                    <p><strong>Características del suelo:</strong> ${info.suelo}</p>
-                `;
-                
-                const infoWindow = new google.maps.InfoWindow({
-                    content: content,
-                    position: { lat: info.lat, lng: info.lng }
+            if (plantaEncontrada.length > 0) {
+                plantaEncontrada.forEach(planta => {
+                    const resultItem = document.createElement('div');
+                    resultItem.classList.add('result-item');
+                    
+                    resultItem.innerHTML = `
+                        <h2>${planta.nombre}</h2>
+                        <p><strong>Tipo:</strong> ${planta.tipo}</p>
+                        <p>${planta.descripcion}</p>
+                        <img src="${planta.imagen}" alt="${planta.nombre}" style="width:100%; max-width:300px; border-radius:5px;">
+                    `;
+                    
+                    resultados.appendChild(resultItem);
                 });
-                infoWindow.open(map);
-            });
+            } else {
+                resultados.innerHTML = '<p>No se encontró ninguna planta con ese nombre.</p>';
+            }
         }
-    }
-</script>
-
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgbh9gYnNR2pdWmd-SV3U8vrMj0LWNWZ0&callback=initMap">
-</script>
- 
+    </script>
 
 </body>
 </html>
