@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Frutas, Verduras y Plantas</title>
-    <link rel="stylesheet" href="Style.css"type="text/css"/>
+    <link rel="stylesheet" href="Style.css" type="text/css"/>
     <style>
         .logo {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 100px;
-    width: auto;
-}
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            height: 100px;
+            width: auto;
+        }
 
-a {
-    display: block;
-}
-body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #e9f5e9;
             display: flex;
@@ -66,38 +63,69 @@ body {
         .login-container p {
             margin-top: 15px;
         }
+
+        .error-message {
+            color: red;
+            margin-bottom: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <a href="index.html"> 
+    <a href="index.html">
         <img src="logo.png" alt="Logo" class="logo">
     </a>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
+        <div class="error-message" id="errorMessage"></div>
         <form id="loginForm">
-            <input type="text" name="username" placeholder="Usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="text" id="username" name="username" placeholder="Usuario" required>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
             <input type="submit" value="Iniciar Sesión">
         </form>
         <p>¿No tienes una cuenta? <a href="registrate.html">Regístrate</a></p>
     </div>
 
-        <script>
-        // Capturar el evento de envío del formulario
+    <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Evitar el envío real del formulario
 
-            // Aquí puedes agregar la validación o verificación de usuario
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            let hasError = false;
+            errorMessage.style.display = 'none';
+            errorMessage.innerHTML = '';
 
-            if (username && password) {
+            if (username.length < 4) {
+                errorMessage.innerHTML += 'El usuario debe tener al menos 4 caracteres.<br>';
+                hasError = true;
+            }
+
+            if (password.length < 6) {
+                errorMessage.innerHTML += 'La contraseña debe tener al menos 6 caracteres.<br>';
+                hasError = true;
+            }
+
+            if (hasError) {
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            const usuariosValidos = {
+                'usuario1': 'password1',
+                'Haziel': 'HazielCein'
+            };
+
+            if (usuariosValidos[username] && usuariosValidos[username] === password) {
                 // Guardar el estado de inicio de sesión
                 localStorage.setItem('usuarioLogueado', 'true');
                 // Redirigir a la página de inicio
                 window.location.href = 'index.html';
             } else {
-                alert('Por favor, ingresa usuario y contraseña.');
+                // Mostrar error si el usuario o contraseña no coinciden
+                errorMessage.innerHTML = 'Usuario o contraseña incorrectos.';
+                errorMessage.style.display = 'block';
             }
         });
     </script>
