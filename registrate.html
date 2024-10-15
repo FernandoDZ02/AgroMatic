@@ -58,7 +58,7 @@
 
         .logo {
             position: absolute;
-            top: 10px;
+            top: -50px;
             right: 10px;
             height: 100px;
             width: auto;
@@ -67,7 +67,65 @@
         a {
             display: block;
         }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
     </style>
+    <script>
+        function validateForm() {
+            
+            const fullname = document.forms["registerForm"]["fullname"].value;
+            const email = document.forms["registerForm"]["email"].value;
+            const username = document.forms["registerForm"]["username"].value;
+            const password = document.forms["registerForm"]["password"].value;
+            const confirm_password = document.forms["registerForm"]["confirm_password"].value;
+            let errors = [];
+
+            
+            if (fullname.length < 3) {
+                errors.push("El nombre completo debe tener al menos 3 caracteres.");
+            }
+
+            
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                errors.push("Por favor ingrese un correo electrónico válido.");
+            }
+
+            
+            if (username.length < 3) {
+                errors.push("El nombre de usuario debe tener al menos 3 caracteres.");
+            }
+
+            
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
+            if (!passwordPattern.test(password)) {
+                errors.push("La contraseña debe tener al menos 6 caracteres, Al menos 1 mayuscula, minúsculas, 1 número y 1 caracter especial.");
+            }
+
+            // Validar coincidencia de contraseñas
+            if (password !== confirm_password) {
+                errors.push("Las contraseñas no coinciden.");
+            }
+
+            
+            const errorContainer = document.getElementById("errorMessages");
+            errorContainer.innerHTML = "";
+            if (errors.length > 0) {
+                errors.forEach(error => {
+                    const errorElement = document.createElement("p");
+                    errorElement.classList.add("error");
+                    errorElement.textContent = error;
+                    errorContainer.appendChild(errorElement);
+                });
+                return false; 
+            }
+
+            return true; 
+        }
+    </script>
 </head>
 <body>
     <a href="index.html"> 
@@ -75,68 +133,17 @@
     </a>
     <div class="register-container">
         <h2>Crear Cuenta</h2>
-        <form id="registerForm">
+        <form name="registerForm" action="/register" method="post" onsubmit="return validateForm()">
             <input type="text" name="fullname" placeholder="Nombre Completo" required>
-            <input type="email" name="email" placeholder="Correo Electrónico" required id="email">
+            <input type="email" name="email" placeholder="Correo Electrónico" required>
             <input type="text" name="username" placeholder="Nombre de Usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required id="password">
-            <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" required id="confirm_password">
-            
-            <label>
-                <input type="checkbox" id="showPassword"> Mostrar Contraseña
-            </label>
-
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" required>
             <input type="submit" value="Registrarse">
         </form>
+        <div id="errorMessages"></div>
         <p>¿Ya tienes una cuenta? <a href="login.html">Inicia Sesión</a></p>
     </div>
-
-    <script>
-        // Función para mostrar u ocultar la contraseña
-        document.getElementById('showPassword').addEventListener('change', function() {
-            var passwordField = document.getElementById('password');
-            var confirmPasswordField = document.getElementById('confirm_password');
-            if (this.checked) {
-                passwordField.type = 'text';
-                confirmPasswordField.type = 'text';
-            } else {
-                passwordField.type = 'password';
-                confirmPasswordField.type = 'password';
-            }
-        });
-
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirm_password').value;
-            var email = document.getElementById('email').value;
-
-            // Validación de requisitos de contraseña
-            var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
-
-            if (!passwordPattern.test(password)) {
-                alert('La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial.');
-                return;
-            }
-
-            // Comparar las contraseñas
-            if (password !== confirmPassword) {
-                alert('Las contraseñas no coinciden');
-                return;
-            }
-
-            // Validar formato del correo
-            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            if (!emailPattern.test(email)) {
-                alert('Por favor, introduce un correo electrónico válido.');
-                return;
-            }
-
-            // Aquí enviamos los datos al servidor
-            alert('Registro exitoso, se ha enviado un correo de confirmación.');
-            this.submit();
-        });
-    </script>
 </body>
 </html>
+
