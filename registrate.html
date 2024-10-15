@@ -55,17 +55,18 @@
         .register-container p {
             margin-top: 15px;
         }
-        .logo {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 100px;
-    width: auto;
-}
 
-a {
-    display: block;
-}
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            height: 100px;
+            width: auto;
+        }
+
+        a {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -74,16 +75,68 @@ a {
     </a>
     <div class="register-container">
         <h2>Crear Cuenta</h2>
-        <form action="/registrate.html" method="post">
+        <form id="registerForm">
             <input type="text" name="fullname" placeholder="Nombre Completo" required>
-            <input type="email" name="email" placeholder="Correo Electrónico" required>
+            <input type="email" name="email" placeholder="Correo Electrónico" required id="email">
             <input type="text" name="username" placeholder="Nombre de Usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" required>
+            <input type="password" name="password" placeholder="Contraseña" required id="password">
+            <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" required id="confirm_password">
+            
+            <label>
+                <input type="checkbox" id="showPassword"> Mostrar Contraseña
+            </label>
+
             <input type="submit" value="Registrarse">
         </form>
         <p>¿Ya tienes una cuenta? <a href="login.html">Inicia Sesión</a></p>
     </div>
 
+    <script>
+        // Función para mostrar u ocultar la contraseña
+        document.getElementById('showPassword').addEventListener('change', function() {
+            var passwordField = document.getElementById('password');
+            var confirmPasswordField = document.getElementById('confirm_password');
+            if (this.checked) {
+                passwordField.type = 'text';
+                confirmPasswordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+                confirmPasswordField.type = 'password';
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm_password').value;
+            var email = document.getElementById('email').value;
+
+            // Validación de requisitos de contraseña
+            var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
+            if (!passwordPattern.test(password)) {
+                alert('La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula, un número y un carácter especial.');
+                return;
+            }
+
+            // Comparar las contraseñas
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+
+            // Validar formato del correo
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailPattern.test(email)) {
+                alert('Por favor, introduce un correo electrónico válido.');
+                return;
+            }
+
+            // Aquí enviamos los datos al servidor
+            alert('Registro exitoso, se ha enviado un correo de confirmación.');
+            this.submit();
+        });
+    </script>
 </body>
 </html>
