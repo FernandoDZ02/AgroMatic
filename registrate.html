@@ -58,10 +58,10 @@
 
         .logo {
             position: absolute;
-            top: -50px;
+            top: 10px;
             right: 10px;
-            height: 100px;
-            width: auto;
+            max-height: 80px;
+            max-width: 100px;
         }
 
         a {
@@ -72,10 +72,37 @@
             color: red;
             font-size: 14px;
         }
+
+        .password-requirements {
+            text-align: left;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+
+        .password-requirements .requirement {
+            display: flex;
+            align-items: center;
+        }
+
+        .password-requirements .requirement span {
+            margin-left: 5px;
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .invalid {
+            color: red;
+        }
+
+        .show-password {
+            margin-top: 10px;
+            font-size: 14px;
+        }
     </style>
     <script>
         function validateForm() {
-            
             const fullname = document.forms["registerForm"]["fullname"].value;
             const email = document.forms["registerForm"]["email"].value;
             const username = document.forms["registerForm"]["username"].value;
@@ -83,34 +110,28 @@
             const confirm_password = document.forms["registerForm"]["confirm_password"].value;
             let errors = [];
 
-            
             if (fullname.length < 3) {
                 errors.push("El nombre completo debe tener al menos 3 caracteres.");
             }
 
-            
             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             if (!emailPattern.test(email)) {
                 errors.push("Por favor ingrese un correo electrónico válido.");
             }
 
-            
             if (username.length < 3) {
                 errors.push("El nombre de usuario debe tener al menos 3 caracteres.");
             }
 
-            
             const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
             if (!passwordPattern.test(password)) {
-                errors.push("La contraseña debe tener al menos 6 caracteres, Al menos 1 mayuscula, minúsculas, 1 número y 1 caracter especial.");
+                errors.push("La contraseña debe tener al menos 6 caracteres.");
             }
 
-            // Validar coincidencia de contraseñas
             if (password !== confirm_password) {
                 errors.push("Las contraseñas no coinciden.");
             }
 
-            
             const errorContainer = document.getElementById("errorMessages");
             errorContainer.innerHTML = "";
             if (errors.length > 0) {
@@ -125,6 +146,28 @@
 
             return true; 
         }
+
+        function checkPasswordStrength() {
+            const password = document.forms["registerForm"]["password"].value;
+
+            const lowercasePattern = /[a-z]/;
+            const uppercasePattern = /[A-Z]/;
+            const numberPattern = /\d/;
+            const specialCharPattern = /[\W_]/;
+
+            document.getElementById("lowercase").className = lowercasePattern.test(password) ? "valid" : "invalid";
+            document.getElementById("uppercase").className = uppercasePattern.test(password) ? "valid" : "invalid";
+            document.getElementById("number").className = numberPattern.test(password) ? "valid" : "invalid";
+            document.getElementById("specialChar").className = specialCharPattern.test(password) ? "valid" : "invalid";
+        }
+
+        function togglePasswordVisibility() {
+            const passwordField = document.querySelector('input[name="password"]');
+            const confirmPasswordField = document.querySelector('input[name="confirm_password"]');
+            const type = passwordField.type === 'password' ? 'text' : 'password';
+            passwordField.type = type;
+            confirmPasswordField.type = type;
+        }
     </script>
 </head>
 <body>
@@ -137,10 +180,34 @@
             <input type="text" name="fullname" placeholder="Nombre Completo" required>
             <input type="email" name="email" placeholder="Correo Electrónico" required>
             <input type="text" name="username" placeholder="Nombre de Usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
+            <input type="password" name="password" placeholder="Contraseña" required oninput="checkPasswordStrength()">
             <input type="password" name="confirm_password" placeholder="Confirmar Contraseña" required>
+            <div class="show-password">
+                <input type="checkbox" onclick="togglePasswordVisibility()"> Mostrar contraseña
+            </div>
             <input type="submit" value="Registrarse">
         </form>
+
+        <!-- Requisitos de contraseña -->
+        <div class="password-requirements">
+            <div class="requirement">
+                <span id="lowercase" class="invalid">&#10008;</span>
+                <span>1 letra minúscula</span>
+            </div>
+            <div class="requirement">
+                <span id="uppercase" class="invalid">&#10008;</span>
+                <span>1 letra mayúscula</span>
+            </div>
+            <div class="requirement">
+                <span id="number" class="invalid">&#10008;</span>
+                <span>1 número</span>
+            </div>
+            <div class="requirement">
+                <span id="specialChar" class="invalid">&#10008;</span>
+                <span>1 carácter especial</span>
+            </div>
+        </div>
+
         <div id="errorMessages"></div>
         <p>¿Ya tienes una cuenta? <a href="login.html">Inicia Sesión</a></p>
     </div>
